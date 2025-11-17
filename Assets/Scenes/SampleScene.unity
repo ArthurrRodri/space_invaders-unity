@@ -470,6 +470,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoviment
   speed: 5
   _rb: {fileID: 760222451}
+  bulletPrefab: {fileID: 9020392639369010242, guid: 777d76c6aaf0d834fbfe86be16e81f67, type: 3}
+  cooldown_: 2.5
+  duration_: 2.5
 --- !u!50 &760222451
 Rigidbody2D:
   serializedVersion: 5
@@ -1319,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8534a783a834b65438d4561b01855020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehavior
-  speed: 15
+  speed: 10
   delay: 0
   duration: 3
   _rb: {fileID: 1893887911}
