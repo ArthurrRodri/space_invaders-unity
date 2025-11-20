@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject laser_;
     [SerializeField] private float cooldown_;
     [SerializeField] private float duration_;
     bool isHit;
@@ -13,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && isHit)
         {
-            Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Instantiate(bulletPrefab, laser_.transform.position, Quaternion.identity);
             isHit = false;
             cooldown_ = 0f;
         }
