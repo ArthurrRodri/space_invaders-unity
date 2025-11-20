@@ -8,8 +8,18 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private bool moveRight;
+    public float health; 
 
     bool moving;
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
 
     private void FixedUpdate() => move();
 

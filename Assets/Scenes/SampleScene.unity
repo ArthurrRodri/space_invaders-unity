@@ -447,8 +447,9 @@ GameObject:
   - component: {fileID: 760222453}
   - component: {fileID: 760222452}
   - component: {fileID: 760222451}
-  - component: {fileID: 760222450}
   - component: {fileID: 760222454}
+  - component: {fileID: 760222450}
+  - component: {fileID: 760222455}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -470,9 +471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoviment
   speed: 5
   _rb: {fileID: 760222451}
-  bulletPrefab: {fileID: 9020392639369010242, guid: 777d76c6aaf0d834fbfe86be16e81f67, type: 3}
-  cooldown_: 2.5
-  duration_: 2.5
 --- !u!50 &760222451
 Rigidbody2D:
   serializedVersion: 5
@@ -485,7 +483,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDamping: 1
   m_AngularDamping: 0.5
   m_GravityScale: 0
@@ -620,6 +618,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &760222455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760222449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2388e4b9218174d93770384f3c8000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  bulletPrefab: {fileID: 9020392639369010242, guid: 777d76c6aaf0d834fbfe86be16e81f67, type: 3}
+  cooldown_: 1.5
+  duration_: 1.5
 --- !u!1 &798101322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1318,7 @@ GameObject:
   - component: {fileID: 1893887910}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1327,6 +1340,7 @@ MonoBehaviour:
   duration: 3
   _rb: {fileID: 1893887911}
   moveRight: 0
+  health: 3
 --- !u!50 &1893887911
 Rigidbody2D:
   serializedVersion: 5
@@ -1384,7 +1398,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
