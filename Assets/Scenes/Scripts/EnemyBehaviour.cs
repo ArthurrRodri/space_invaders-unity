@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float speed;
     [SerializeField] private float delay;
     [SerializeField] private float duration;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private bool moveRight;
-    public float health; 
+    [SerializeField] private float cooldown_;
+    [SerializeField] private float randomShootTime;
 
+    public float health;
     bool moving;
+    bool canShoot;
+
+    private void Start() => randomShootTime = Random.Range(3f, 10f);
 
     private void Update()
     {
@@ -18,10 +24,13 @@ public class EnemyBehavior : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 
-    private void FixedUpdate() => move();
+    private void FixedUpdate() {
+        move();
+        CanShoot(); 
+    }
+
 
     private void move()
     {
@@ -42,6 +51,29 @@ public class EnemyBehavior : MonoBehaviour
         }
         cooldown(); 
 
+    }
+
+    private void CanShoot()  {
+        if (canShoot)
+        {
+            Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            randomShootTime = Random.Range(3f, 10f);
+            cooldown_ = 0f;
+            canShoot = false;
+        }
+        TiroCooldown();
+    }
+
+
+    private void TiroCooldown()
+    {
+        if (cooldown_ > randomShootTime)
+        {
+            canShoot = true;
+        }else
+        {
+            cooldown_ += Time.deltaTime;
+        }
     }
 
     private void cooldown()

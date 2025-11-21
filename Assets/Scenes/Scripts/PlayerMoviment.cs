@@ -4,9 +4,15 @@ public class PlayerMoviment : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D _rb;
-
-    bool isDead;
+    public float health;
     
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void FixedUpdate()
     {
